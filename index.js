@@ -2,18 +2,18 @@ const fs = require('fs');
 const jsonServer = require('json-server');
 const path = require('path');
 
-const server = create();
+const server = jsonServer.create();
 
-const router = _router(resolve(__dirname, 'db.json'));
+const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
-server.use(defaults({}));
-server.use(bodyParser);
+server.use(jsonServer.defaults({}));
+server.use(jsonServer.bodyParser);
 
 // Эндпоинт для логина
 server.post('/login', (req, res) => {
     try {
         const { username, password } = req.body;
-        const db = JSON.parse(readFileSync(resolve(__dirname, 'db.json'), 'UTF-8'));
+        const db = JSON.parse(fs.readFileSync(path.resolve(__dirname, 'db.json'), 'UTF-8'));
         const { users = [] } = db;
 
         const userFromBd = users.find(
