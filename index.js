@@ -1,6 +1,6 @@
-import { readFileSync } from 'fs';
-import { create, router as _router, defaults, bodyParser } from 'json-server';
-import { resolve } from 'path';
+const fs = require('fs');
+const jsonServer = require('json-server');
+const path = require('path');
 
 const server = create();
 
