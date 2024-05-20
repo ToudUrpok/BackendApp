@@ -5,7 +5,9 @@ var cors = require('cors')
 
 const server = jsonServer.create();
 
-server.use(cors())
+server.use(cors({
+    origin: ['https://660c0e822dca040008361f94--graceful-chaja-a544ea.netlify.app']
+  }))
 
 const router = jsonServer.router(path.resolve(__dirname, 'db.json'));
 
